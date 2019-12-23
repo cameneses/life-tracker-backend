@@ -1,0 +1,11 @@
+{
+  "name": "life-tracker-backend",
+  "version": "1.0.0",
+  "description": "backend of a tracking app because i want a healthy life",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "César Meneses",
+  "license": "ISC"
+}
