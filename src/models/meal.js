@@ -1,11 +1,22 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  const meal = sequelize.define('meal', {
-    mealCategoryId: DataTypes.INTEGER,
-    date: DataTypes.STRING
-  }, {});
+  const meal = sequelize.define(
+    "meal",
+    {
+      mealCategoryId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "mealCategories",
+          key: "id"
+        },
+        allowNull: false
+      },
+      date: DataTypes.STRING
+    },
+    {}
+  );
   meal.associate = function(models) {
-    // associations can be defined here
+    meal.belongsTo(models.mealCategory);
   };
   return meal;
 };

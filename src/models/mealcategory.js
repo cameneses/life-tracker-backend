@@ -1,10 +1,14 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  const mealCategory = sequelize.define('mealCategory', {
-    name: DataTypes.STRING
-  }, {});
+  const mealCategory = sequelize.define(
+    "mealCategory",
+    {
+      name: DataTypes.STRING
+    },
+    {}
+  );
   mealCategory.associate = function(models) {
-    // associations can be defined here
+    mealCategory.hasMany(models.meal);
   };
   return mealCategory;
 };

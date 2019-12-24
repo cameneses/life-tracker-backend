@@ -9,7 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       mealCategoryId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "mealCategories",
+          key: "id"
+        },
+        allowNull: false
       },
       date: {
         type: Sequelize.STRING
