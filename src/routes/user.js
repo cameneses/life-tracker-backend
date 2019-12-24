@@ -5,8 +5,12 @@ const router = new KoaRouter();
 
 router.post("user.signup", "/signup", async ctx => {
   const { username, email, password } = ctx.request.body;
-  const user = await ctx.orm.user.create({ username, email, password });
-  ctx.body = { user };
+  try {
+    const user = await ctx.orm.user.create({ username, email, password });
+    ctx.body = { user };
+  } catch (validationError) {
+    ctx.throw(500, "Validation error");
+  }
 });
 
 router.post("user.login", "/login", async ctx => {
@@ -21,4 +25,3 @@ router.post("user.login", "/login", async ctx => {
 });
 
 module.exports = router;
-
