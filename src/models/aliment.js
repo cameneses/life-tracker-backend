@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   aliment.associate = function(models) {
     aliment.belongsTo(models.category);
+    aliment.hasMany(models.food);
   };
   return aliment;
 };
