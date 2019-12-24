@@ -4,6 +4,7 @@ const Koa = require("koa");
 const koaBody = require('koa-body');
 const logger = require("koa-logger");
 const routes = require('./routes');
+const override = require('koa-override-method');
 const orm = require('./models');
 
 
@@ -22,6 +23,9 @@ app.use(async (ctx, next) => {
     ctx.app.emit("error", err, ctx);
   }
 });
+
+// expose ORM through context's prototype
+app.context.orm = orm;
 
 // Parse request body
 app.use(
