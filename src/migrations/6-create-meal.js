@@ -1,12 +1,20 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('meals', {
+    return queryInterface.createTable("meals", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id"
+        },
+        allowNull: false
       },
       mealCategoryId: {
         type: Sequelize.INTEGER,
@@ -30,6 +38,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('meals');
+    return queryInterface.dropTable("meals");
   }
 };
