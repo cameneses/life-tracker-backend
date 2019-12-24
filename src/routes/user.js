@@ -24,4 +24,15 @@ router.post("user.login", "/login", async ctx => {
   }
 });
 
+router.get("user.show", "/:username", async ctx => {
+  const { username } = ctx.params;
+  const user = await ctx.orm.user.findOne({ where: { username } });
+  if (user) {
+    const { email, username } = user;
+    ctx.body = { email, username };
+  } else {
+    ctx.throw(404, "User not found");
+  }
+});
+
 module.exports = router;
