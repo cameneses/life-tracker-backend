@@ -1,9 +1,10 @@
 const KoaRouter = require("koa-router");
+const checkAdmin = require("./utils/admin");
 
 const router = new KoaRouter();
 
 // This is an admin only route
-router.post("mealCategory.create", "/", async ctx => {
+router.post("mealCategory.create", "/", checkAdmin, async ctx => {
   const { name } = ctx.request.body;
   try {
     const mealCategory = await ctx.orm.mealCategory.create({ name });
