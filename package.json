@@ -4,6 +4,7 @@
   "description": "backend of a tracking app because i want a healthy life",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js"
   },
