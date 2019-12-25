@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      isAdmin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       username: {
         type: Sequelize.STRING
       },

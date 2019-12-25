@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     "user",
     {
       username: DataTypes.STRING,
+      isAdmin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,

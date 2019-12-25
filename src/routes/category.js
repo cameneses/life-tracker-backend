@@ -1,8 +1,9 @@
 const KoaRouter = require("koa-router");
+const checkAdmin = require("./utils/admin");
 
 const router = new KoaRouter();
 
-router.post("category.create", "/", async ctx => {
+router.post("category.create", "/", checkAdmin, async ctx => {
   const { name } = ctx.request.body;
   try {
     const category = await ctx.orm.category.create({ name });
