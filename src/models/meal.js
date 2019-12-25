@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
   meal.associate = function(models) {
     meal.belongsTo(models.mealCategory);
     meal.belongsTo(models.user);
+    meal.belongsToMany(models.food, { through: "mealfoods" });
   };
   return meal;
 };
