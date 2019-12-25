@@ -22,10 +22,11 @@ router.get("mealCategory.all", "/", async ctx => {
 // TODO: This should return currentUser meals
 router.get("mealCategory.meals", "/:name", async ctx => {
   const { name } = ctx.params;
+  const { id } = ctx.state.currentUser;
   try {
     const mealCategory = await ctx.orm.mealCategory.findOne({
       where: { name },
-      include: [{ model: ctx.orm.meal }]
+      include: [{ model: ctx.orm.meal, where: { userId: id } }]
     });
     ctx.body = { mealCategory };
   } catch (validationError) {
