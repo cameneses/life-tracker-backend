@@ -5,6 +5,8 @@ const userRoutes = require("./routes/user");
 const alimentRoutes = require("./routes/aliment");
 const categoryRoutes = require("./routes/category");
 const foodRoutes = require("./routes/food");
+const mealCategoryRoutes = require("./routes/mealCategory");
+const mealRoutes = require("./routes/meal");
 
 const router = new KoaRouter();
 
@@ -26,5 +28,7 @@ router.use(async (ctx, next) => {
 router.use("/aliments", alimentRoutes.routes());
 router.use("/food", foodRoutes.routes());
 router.use("/categories", categoryRoutes.routes());
+router.use("/meal-categories", mealCategoryRoutes.routes());
+router.use("/meals", mealRoutes.routes());
 
 module.exports = router;
